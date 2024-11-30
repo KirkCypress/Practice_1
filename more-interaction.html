@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Interaction - Kirk Cypress G. Ramos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 36px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Gallery Styles */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .image-item {
+            width: calc(33.33% - 15px);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-item img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <button onclick="window.location.href='index.html'" class="logo">Back to Home</button>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contacts</a>
+        </nav>
+    </header>
+
+    <!-- More Interaction Section -->
+    <section class="more-interaction">
+        <h2>Explore More Images</h2>
+        <p>Click on the images below for more details and interaction!</p>
+        
+        <div class="image-gallery">
+            <div class="image-item">
+                <img src="pics/More-interaction pics/The Ancient Council.jpg" alt="Image 1" class="expandable-image">
+                <p>The Ancient Council</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Salvador Balmorez.jpg" alt="Image 2" class="expandable-image">
+                <p>Salvador Balmorez</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Maria Beltran.jpg" alt="Image 3" class="expandable-image">
+                <p>Maria Beltran</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Victor Dela Cruz.jpg" alt="Image 4" class="expandable-image">
+                <p>Victor Dela Cruz</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Juana Lopez.jpg" alt="Image 5" class="expandable-image">
+                <p>Juana Lopez</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Teodoro Valdez.jpg" alt="Image 6" class="expandable-image">
+                <p>Teodoro Valdez</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Silvio Santiago.jpg" alt="Image 7" class="expandable-image">
+                <p>Silvio Santiago</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/The Night Howlers.jpg" alt="Image 8" class="expandable-image">
+                <p>The Night Howlers</p>
+            </div>
+            <div class="image-item">
+                <img src="pics/More-interaction pics/Lucifer.jpg" alt="Image 9" class="expandable-image">
+                <p>Lucifer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Image Expansion -->
+    <div id="image-modal" class="modal">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <img class="modal-content" id="expanded-image" src="">
+    </div>
+
+    <script>
+        // Get the modal
+        const modal = document.getElementById("image-modal");
+        const expandedImage = document.getElementById("expanded-image");
+        const closeModal = document.getElementById("close-modal");
+
+        // Get all images in the gallery section
+        const images = document.querySelectorAll(".expandable-image");
+
+        // Function to open modal when image is clicked
+        images.forEach(image => {
+            image.addEventListener("click", () => {
+                modal.style.display = "flex"; // Show the modal
+                expandedImage.src = image.src; // Set the image source of the modal to the clicked image
+            });
+        });
+
+        // Close the modal when close button is clicked
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none"; // Hide the modal
+        });
+
+        // Close the modal when clicked outside the image (optional)
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none"; // Hide the modal if clicked outside
+            }
+        });
+    </script>
+
+</body>
+</html>
